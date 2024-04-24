@@ -1,6 +1,6 @@
-# car-parking-agent
+# ML-Agents Sandbox
 
-Fun and personal project to make a self-parking car (agent) to build and reinforce ML-Agents and Unity 3D skills.
+Fun and personal projects to build and reinforce ML-Agents and Unity 3D skills.
 
 ## Prerequisites
 
