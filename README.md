@@ -39,11 +39,11 @@ Fun and personal project to make a self-parking car (agent) to build and reinfor
    ```shell
    mlagents-learn --help
    ```
-9b) If it doesn't work, good luck!
+If it doesn't work, good luck!
 Fix all errors until the command in step 9) doesn't display any error
 
 Useful commands in case of errors:
-* Protobuf :
+* Protobuf
   ```shell
   pip install protobuf==3.20.3
   ```
