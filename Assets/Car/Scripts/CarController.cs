@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarControllerBis : MonoBehaviour
+public class CarController : MonoBehaviour
 {
-    private float horizontalInput, verticalInput;
-    private float currentSteerAngle, currentbreakForce;
+    private float horizontalInput;
+    private float verticalInput;
+    private float currentSteerAngle;
+    private float currentbreakForce;
     private bool isBreaking;
 
     [Header("Settings")]
