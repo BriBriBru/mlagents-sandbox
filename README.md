@@ -56,4 +56,18 @@ Useful commands in case of errors:
   pip install numpy
   ```
 
+## Run Training
+
+* Start training
+  ```shell
+  mlagents-learn --run-id [run name]
+  ```
+* Resume training
+  ```shell
+  mlagents-learn --run-id [run name to resume] --resume
+  ```
+* In case of "Module onnx is not installed!" error:
+  ```shell
+  pip install onnx
+  ```
 
