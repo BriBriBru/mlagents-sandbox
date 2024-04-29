@@ -174,7 +174,7 @@ PrefabInstance:
     - target: {fileID: 4007273026502059807, guid: ec267f61338c97f4aad88750072f820e, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: ec6f4c059d052b7418b8c667808e0379, type: 3}
+      objectReference: {fileID: 5022602860645237092, guid: 95ed2bf7cc78f2a4b8f07aef8556470e, type: 3}
     - target: {fileID: 8055015720912478984, guid: ec267f61338c97f4aad88750072f820e, type: 3}
       propertyPath: m_Name
       value: Environment
