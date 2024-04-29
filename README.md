@@ -73,6 +73,12 @@ c) Install Torch library with CUDA SUPPORT
 pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
+d) To verify if PyTorch has been installed with CUDA support in Python, you can run the following command in your Python environment
+```python
+import torch
+torch.cuda.is_available() # Need to be True
+```
+
 **11) Change Protobuf version to 3.20.3**
 ```shell
 pip install protobuf==3.20.3
