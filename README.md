@@ -22,12 +22,12 @@ py | python
 
 **4) Create a Python virtual environment**
 ```shell
-py -m venv [environment name]
+py -m venv mlagents-venv
 ```
 
 **5) Activate the virtual environment**
 ```shell
-.\[environment name]\Scripts\activate
+.\mlagents-venv\Scripts\activate
 ```
 If your system doesn't allow script execution, run the following command in PowerShell as administrator
 ```shell
