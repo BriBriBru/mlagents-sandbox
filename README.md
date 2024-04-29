@@ -60,6 +60,18 @@ pip install mlagents
 ```shell
 pip install torch torchvision torchaudio
 ```
+If you want to use CUDA support :
+
+a) Check if you have the version 12.1 of the CUDA TOOKIT
+```shell
+nvcc --version
+```
+b) If not, install [CUDA TOOLKIT 12.1](https://developer.nvidia.com/cuda-12-1-0-download-archive?target_os=Windows&target_arch=x86_64&target_version=11&target_type=exe_local)
+
+c) Install Torch library with CUDA SUPPORT
+```shell
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
 
 **11) Change Protobuf version to 3.20.3**
 ```shell
