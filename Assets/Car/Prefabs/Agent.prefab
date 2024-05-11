@@ -918,7 +918,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4417704634553419172}
   - component: {fileID: 2732220459058603634}
-  - component: {fileID: 6704913433788536670}
   m_Layer: 0
   m_Name: Agent
   m_TagString: Untagged
@@ -971,26 +970,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6704913433788536670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9217304319528368590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d904938d36cb12845a95e881834a802e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  motorForce: 1000
-  breakForce: 3000
-  maxSteerAngle: 30
-  frontLeftWheelCollider: {fileID: 4334426737878503293}
-  frontRightWheelCollider: {fileID: 5064211748209111757}
-  rearLeftWheelCollider: {fileID: 3171872370558979727}
-  rearRightWheelCollider: {fileID: 240590824477077071}
-  frontLeftWheelTransform: {fileID: 5908632183062577645}
-  frontRightWheelTransform: {fileID: 5994123122141632019}
-  rearLeftWheelTransform: {fileID: 7728161190122706400}
-  rearRightWheelTransform: {fileID: 1052502368068408567}
