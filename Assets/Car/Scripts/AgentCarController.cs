@@ -8,6 +8,7 @@ public class CarAgentController : Agent
     private float currentSteerAngle;
     private float currentBreakForce;
     private bool isBreaking;
+    private bool isParked;
 
     [Header("Car Settings")]
     [SerializeField] private float motorForce;
@@ -32,6 +33,11 @@ public class CarAgentController : Agent
 
     [Header("Run Settings")]
     [SerializeField] private float timer = 40f;
+
+    public override void OnEpisodeBegin()
+    {
+        isParked = false;
+    }
 
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -74,10 +80,16 @@ public class CarAgentController : Agent
             EndEpisode();
         }
 
-        if (IsCarInsideParkingZone())
+        isParked = IsCarInsideParkingZone();
+        if (isParked)
         {
             AddReward(10f);
+            ChangeParkingZoneColor(Color.green);
             EndEpisode();
+        }
+        else
+        {
+            ChangeParkingZoneColor(Color.red);
         }
     }
 
@@ -90,6 +102,12 @@ public class CarAgentController : Agent
         Collider[] colliders = Physics.OverlapBox(bodyCarCollider.transform.position, bodyCarCollider.bounds.extents, bodyCarCollider.transform.rotation, layerMask, QueryTriggerInteraction.Ignore);
 
         return colliders.Length > 1;
+    }
+
+    private void ChangeParkingZoneColor(Color newColor)
+    {
+        Material parkingZoneMaterial = parkingPlace.GetComponent<Renderer>().material;
+        parkingZoneMaterial.color = newColor;
     }
 
     private void ApplyBreaking()
