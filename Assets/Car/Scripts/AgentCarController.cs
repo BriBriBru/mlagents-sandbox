@@ -8,7 +8,6 @@ public class CarAgentController : Agent
     private float currentSteerAngle;
     private float currentBreakForce;
     private bool isBreaking;
-    private bool isParked;
 
     [Header("Car Settings")]
     [SerializeField] private float motorForce;
@@ -31,13 +30,10 @@ public class CarAgentController : Agent
     [SerializeField] private GameObject parkingPlace;
     [SerializeField] private Transform border;
 
-    [Header("Run Settings")]
+    [Header("Agent Settings")]
     [SerializeField] private float timer = 40f;
+    [SerializeField] private short numBeaconRequired;
 
-    public override void OnEpisodeBegin()
-    {
-        isParked = false;
-    }
 
     public override void CollectObservations(VectorSensor sensor)
     {
@@ -71,8 +67,6 @@ public class CarAgentController : Agent
         HandleSteering();
         UpdateWheels();
 
-        AddReward(-0.1f);
-
         timer -= Time.deltaTime;
         if (timer <= 0)
         {
@@ -80,8 +74,7 @@ public class CarAgentController : Agent
             EndEpisode();
         }
 
-        isParked = IsCarInsideParkingZone();
-        if (isParked)
+        if (parkingPlace.GetComponent<ParkingPlace>().numBeaconInPlace == numBeaconRequired)
         {
             AddReward(10f);
             ChangeParkingZoneColor(Color.green);
@@ -91,17 +84,6 @@ public class CarAgentController : Agent
         {
             ChangeParkingZoneColor(Color.red);
         }
-    }
-
-    private bool IsCarInsideParkingZone()
-    {
-        Transform bodyCar = transform.Find("Body");
-        Collider bodyCarCollider = bodyCar.GetComponent<Collider>();
-
-        int layerMask = 1 << parkingPlace.GetComponent<MeshCollider>().gameObject.layer;
-        Collider[] colliders = Physics.OverlapBox(bodyCarCollider.transform.position, bodyCarCollider.bounds.extents, bodyCarCollider.transform.rotation, layerMask, QueryTriggerInteraction.Ignore);
-
-        return colliders.Length > 1;
     }
 
     private void ChangeParkingZoneColor(Color newColor)
