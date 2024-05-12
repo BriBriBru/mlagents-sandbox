@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ParkingPlace : MonoBehaviour
 {
-    public short numBeaconInPlace = 0;
+    [HideInInspector] public short numBeaconInPlace = 0;
 
     void OnTriggerEnter(Collider other)
     {
