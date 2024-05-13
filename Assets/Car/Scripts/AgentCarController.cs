@@ -5,6 +5,7 @@ using Unity.MLAgents.Actuators;
 
 public class CarAgentController : Agent
 {
+    private Vector3 initialPosition;
     private float currentSteerAngle;
     private float currentBreakForce;
     private bool isBreaking;
@@ -31,17 +32,25 @@ public class CarAgentController : Agent
     [SerializeField] private Transform border;
 
     [Header("Agent Settings")]
-    [SerializeField] private float timer = 40f;
     [SerializeField] private short numBeaconRequired;
 
+    public override void Initialize()
+    {
+        initialPosition = transform.position;
+    }
+
+    public override void OnEpisodeBegin()
+    {
+        transform.position = initialPosition;
+    }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(GetComponent<Rigidbody>().velocity);
-        sensor.AddObservation(GetComponent<Rigidbody>().angularVelocity);
-        sensor.AddObservation(Vector3.Distance(transform.position, parkingPlace.transform.position));
-        sensor.AddObservation(Vector3.Distance(transform.position, border.position));
+        sensor.AddObservation(transform.localPosition);
+        sensor.AddObservation(parkingPlace.transform.localPosition);
+        sensor.AddObservation(parkingPlace.GetComponent<ParkingPlace>().numBeaconInPlace);
     }
+
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
@@ -67,16 +76,9 @@ public class CarAgentController : Agent
         HandleSteering();
         UpdateWheels();
 
-        timer -= Time.deltaTime;
-        if (timer <= 0)
-        {
-            AddReward(-10f);
-            EndEpisode();
-        }
-
         if (parkingPlace.GetComponent<ParkingPlace>().numBeaconInPlace == numBeaconRequired)
         {
-            AddReward(10f);
+            AddReward(20f);
             ChangeParkingZoneColor(Color.green);
             EndEpisode();
         }
@@ -128,6 +130,7 @@ public class CarAgentController : Agent
         if (collision.gameObject.CompareTag("Car") || collision.gameObject.CompareTag("Border"))
         {
             AddReward(-5f);
+            EndEpisode();
         }
     }
 }

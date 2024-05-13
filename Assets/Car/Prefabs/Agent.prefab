@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 8
+    VectorObservationSize: 7
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 3
@@ -1321,7 +1321,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 1
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: AutoParkCar
   TeamId: 0
   m_UseChildSensors: 1
@@ -1343,7 +1343,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  motorForce: 1000
+  motorForce: 800
   breakForce: 3000
   maxSteerAngle: 30
   frontLeftWheelCollider: {fileID: 4334426737878503293}
@@ -1356,7 +1356,6 @@ MonoBehaviour:
   rearRightWheelTransform: {fileID: 1052502368068408567}
   parkingPlace: {fileID: 0}
   border: {fileID: 0}
-  timer: 40
   numBeaconRequired: 6
 --- !u!114 &7138365331005481069
 MonoBehaviour:

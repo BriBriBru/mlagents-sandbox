@@ -1,0 +1,38 @@
+{
+    "AutoParkCar": {
+        "checkpoints": [
+            {
+                "steps": 499965,
+                "file_path": "results\\test\\AutoParkCar\\AutoParkCar-499965.onnx",
+                "reward": -5.0,
+                "creation_time": 1715550199.1658182,
+                "auxillary_file_paths": [
+                    "results\\test\\AutoParkCar\\AutoParkCar-499965.pt"
+                ]
+            },
+            {
+                "steps": 500221,
+                "file_path": "results\\test\\AutoParkCar\\AutoParkCar-500221.onnx",
+                "reward": -5.0,
+                "creation_time": 1715550199.2412016,
+                "auxillary_file_paths": [
+                    "results\\test\\AutoParkCar\\AutoParkCar-500221.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500221,
+            "file_path": "results\\test\\AutoParkCar.onnx",
+            "reward": -5.0,
+            "creation_time": 1715550199.2412016,
+            "auxillary_file_paths": [
+                "results\\test\\AutoParkCar\\AutoParkCar-500221.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.3.0+cu121"
+    }
+}
