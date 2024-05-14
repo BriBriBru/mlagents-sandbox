@@ -321,6 +321,10 @@ PrefabInstance:
       propertyPath: m_Model
       value: 
       objectReference: {fileID: 5022602860645237092, guid: ed09d216e2dbb21489554db603d3247d, type: 3}
+    - target: {fileID: 878861135413863149, guid: 78da955b90da3984e9d511b034f424b0, type: 3}
+      propertyPath: m_BehaviorType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5216349402957108604, guid: 78da955b90da3984e9d511b034f424b0, type: 3}
       propertyPath: m_Name
       value: Environment

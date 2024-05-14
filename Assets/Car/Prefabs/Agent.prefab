@@ -1310,7 +1310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 7
+    VectorObservationSize: 9
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 3
@@ -1357,6 +1357,7 @@ MonoBehaviour:
   parkingPlace: {fileID: 0}
   border: {fileID: 0}
   numBeaconRequired: 6
+  parkingThreshold: 0.25
 --- !u!114 &7138365331005481069
 MonoBehaviour:
   m_ObjectHideFlags: 0
