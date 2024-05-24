@@ -1,0 +1,65 @@
+{
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.3.0+cpu"
+    },
+    "AutoParkCar": {
+        "checkpoints": [
+            {
+                "steps": 28499789,
+                "file_path": "results\\TestWithSensor\\AutoParkCar\\AutoParkCar-28499789.onnx",
+                "reward": null,
+                "creation_time": 1716532989.4602711,
+                "auxillary_file_paths": [
+                    "results\\TestWithSensor\\AutoParkCar\\AutoParkCar-28499789.pt"
+                ]
+            },
+            {
+                "steps": 28999789,
+                "file_path": "results\\TestWithSensor\\AutoParkCar\\AutoParkCar-28999789.onnx",
+                "reward": null,
+                "creation_time": 1716533815.0377207,
+                "auxillary_file_paths": [
+                    "results\\TestWithSensor\\AutoParkCar\\AutoParkCar-28999789.pt"
+                ]
+            },
+            {
+                "steps": 29499789,
+                "file_path": "results\\TestWithSensor\\AutoParkCar\\AutoParkCar-29499789.onnx",
+                "reward": null,
+                "creation_time": 1716534636.5652592,
+                "auxillary_file_paths": [
+                    "results\\TestWithSensor\\AutoParkCar\\AutoParkCar-29499789.pt"
+                ]
+            },
+            {
+                "steps": 29999789,
+                "file_path": "results\\TestWithSensor\\AutoParkCar\\AutoParkCar-29999789.onnx",
+                "reward": null,
+                "creation_time": 1716535462.372092,
+                "auxillary_file_paths": [
+                    "results\\TestWithSensor\\AutoParkCar\\AutoParkCar-29999789.pt"
+                ]
+            },
+            {
+                "steps": 30005789,
+                "file_path": "results\\TestWithSensor\\AutoParkCar\\AutoParkCar-30005789.onnx",
+                "reward": null,
+                "creation_time": 1716535463.5230353,
+                "auxillary_file_paths": [
+                    "results\\TestWithSensor\\AutoParkCar\\AutoParkCar-30005789.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 30005789,
+            "file_path": "results\\TestWithSensor\\AutoParkCar.onnx",
+            "reward": null,
+            "creation_time": 1716535463.5230353,
+            "auxillary_file_paths": [
+                "results\\TestWithSensor\\AutoParkCar\\AutoParkCar-30005789.pt"
+            ]
+        }
+    }
+}
