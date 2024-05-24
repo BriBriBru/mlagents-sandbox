@@ -7,7 +7,6 @@ TagManager:
   - Car
   - Agent
   - Border
-  - Sidewalk
   - ParkingPlace
   - AgentCarBeacon
   layers:
