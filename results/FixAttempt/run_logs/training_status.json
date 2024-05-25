@@ -1,0 +1,101 @@
+{
+    "AutoParkCar": {
+        "checkpoints": [
+            {
+                "steps": 26499212,
+                "file_path": "results\\FixAttempt\\AutoParkCar\\AutoParkCar-26499212.onnx",
+                "reward": null,
+                "creation_time": 1716633113.9392343,
+                "auxillary_file_paths": [
+                    "results\\FixAttempt\\AutoParkCar\\AutoParkCar-26499212.pt"
+                ]
+            },
+            {
+                "steps": 26999212,
+                "file_path": "results\\FixAttempt\\AutoParkCar\\AutoParkCar-26999212.onnx",
+                "reward": null,
+                "creation_time": 1716634568.1533487,
+                "auxillary_file_paths": [
+                    "results\\FixAttempt\\AutoParkCar\\AutoParkCar-26999212.pt"
+                ]
+            },
+            {
+                "steps": 27499212,
+                "file_path": "results\\FixAttempt\\AutoParkCar\\AutoParkCar-27499212.onnx",
+                "reward": null,
+                "creation_time": 1716634826.0286276,
+                "auxillary_file_paths": [
+                    "results\\FixAttempt\\AutoParkCar\\AutoParkCar-27499212.pt"
+                ]
+            },
+            {
+                "steps": 27999109,
+                "file_path": "results\\FixAttempt\\AutoParkCar\\AutoParkCar-27999109.onnx",
+                "reward": -5.0,
+                "creation_time": 1716635095.8027031,
+                "auxillary_file_paths": [
+                    "results\\FixAttempt\\AutoParkCar\\AutoParkCar-27999109.pt"
+                ]
+            },
+            {
+                "steps": 28499109,
+                "file_path": "results\\FixAttempt\\AutoParkCar\\AutoParkCar-28499109.onnx",
+                "reward": null,
+                "creation_time": 1716636505.9924915,
+                "auxillary_file_paths": [
+                    "results\\FixAttempt\\AutoParkCar\\AutoParkCar-28499109.pt"
+                ]
+            },
+            {
+                "steps": 28999309,
+                "file_path": "results\\FixAttempt\\AutoParkCar\\AutoParkCar-28999309.onnx",
+                "reward": -5.0,
+                "creation_time": 1716636764.7632205,
+                "auxillary_file_paths": [
+                    "results\\FixAttempt\\AutoParkCar\\AutoParkCar-28999309.pt"
+                ]
+            },
+            {
+                "steps": 29499309,
+                "file_path": "results\\FixAttempt\\AutoParkCar\\AutoParkCar-29499309.onnx",
+                "reward": -5.0,
+                "creation_time": 1716637024.1413352,
+                "auxillary_file_paths": [
+                    "results\\FixAttempt\\AutoParkCar\\AutoParkCar-29499309.pt"
+                ]
+            },
+            {
+                "steps": 29999309,
+                "file_path": "results\\FixAttempt\\AutoParkCar\\AutoParkCar-29999309.onnx",
+                "reward": null,
+                "creation_time": 1716638514.3170793,
+                "auxillary_file_paths": [
+                    "results\\FixAttempt\\AutoParkCar\\AutoParkCar-29999309.pt"
+                ]
+            },
+            {
+                "steps": 30000309,
+                "file_path": "results\\FixAttempt\\AutoParkCar\\AutoParkCar-30000309.onnx",
+                "reward": null,
+                "creation_time": 1716638514.5767412,
+                "auxillary_file_paths": [
+                    "results\\FixAttempt\\AutoParkCar\\AutoParkCar-30000309.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 30000309,
+            "file_path": "results\\FixAttempt\\AutoParkCar.onnx",
+            "reward": null,
+            "creation_time": 1716638514.5767412,
+            "auxillary_file_paths": [
+                "results\\FixAttempt\\AutoParkCar\\AutoParkCar-30000309.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.3.0+cu121"
+    }
+}

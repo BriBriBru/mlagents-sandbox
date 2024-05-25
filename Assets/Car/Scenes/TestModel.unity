@@ -317,6 +317,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 300912135467747898, guid: 78da955b90da3984e9d511b034f424b0, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 878861135413863149, guid: 78da955b90da3984e9d511b034f424b0, type: 3}
       propertyPath: m_Model
       value: 
@@ -324,6 +328,14 @@ PrefabInstance:
     - target: {fileID: 878861135413863149, guid: 78da955b90da3984e9d511b034f424b0, type: 3}
       propertyPath: m_BehaviorType
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 878861135413863149, guid: 78da955b90da3984e9d511b034f424b0, type: 3}
+      propertyPath: m_InferenceDevice
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182830439813785859, guid: 78da955b90da3984e9d511b034f424b0, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5216349402957108604, guid: 78da955b90da3984e9d511b034f424b0, type: 3}
       propertyPath: m_Name
@@ -367,6 +379,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7233968543674020162, guid: 78da955b90da3984e9d511b034f424b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7342872893804606219, guid: 78da955b90da3984e9d511b034f424b0, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7814729476333040564, guid: 78da955b90da3984e9d511b034f424b0, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

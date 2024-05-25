@@ -1638,6 +1638,7 @@ MonoBehaviour:
   border: {fileID: 0}
   numBeaconRequired: 6
   parkingThreshold: 0.25
+  timeToPark: 80
 --- !u!114 &7138365331005481069
 MonoBehaviour:
   m_ObjectHideFlags: 0

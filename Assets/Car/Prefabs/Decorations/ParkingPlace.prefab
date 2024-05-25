@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7153267929725893288}
   - component: {fileID: 8984314961162959642}
   - component: {fileID: 2969959178532964441}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: ParkingPlace
   m_TagString: ParkingPlace
   m_Icon: {fileID: 0}

@@ -2,7 +2,6 @@ using UnityEngine;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using Unity.MLAgents.Actuators;
-using Unity.MLAgents.Policies;
 
 
 public class CarAgentController : Agent
@@ -15,6 +14,7 @@ public class CarAgentController : Agent
     private float currentBreakForce;
     private bool isBreaking;
     private bool isParked;
+    private int parkingZoneLayer;
 
     [Header("Car Settings")]
     [SerializeField] private float motorForce;
@@ -40,6 +40,7 @@ public class CarAgentController : Agent
     [Header("Agent Settings")]
     [SerializeField] private short numBeaconRequired = 6;
     [SerializeField] private float parkingThreshold = 0.25f;
+    [SerializeField] private float timeToPark = 80f;
 
     public override void Initialize()
     {
@@ -47,6 +48,7 @@ public class CarAgentController : Agent
         initialRotation = transform.rotation;
         initialParkingPlacePosition = parkingPlace.transform.position;
         initialParkingPlaceRotation = parkingPlace.transform.rotation;
+        parkingZoneLayer = LayerMask.NameToLayer("ParkingZone");
     }
 
     public override void OnEpisodeBegin()
@@ -85,6 +87,13 @@ public class CarAgentController : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
+        float currentTime = timeToPark;
+        currentTime -= Time.deltaTime;
+        if (currentTime <= 0f)
+        {
+            AddReward(-2);
+        }
+
         float horizontalInput = actions.ContinuousActions[0];
         currentSteerAngle = maxSteerAngle * horizontalInput;
 
@@ -102,11 +111,11 @@ public class CarAgentController : Agent
         if (!isParked && IsParkedCorrectly())
         {
             isParked = true;
-            AddReward(20f);
+            AddReward(100f);
             ChangeParkingZoneColor(Color.green);
             EndEpisode();
         }
-        else if (parkingPlace.GetComponent<ParkingPlace>().numBeaconInPlace == numBeaconRequired)
+        if (parkingPlace.GetComponent<ParkingPlace>().numBeaconInPlace == numBeaconRequired)
         {
             AddReward(10f);
             ChangeParkingZoneColor(Color.green);
@@ -120,10 +129,36 @@ public class CarAgentController : Agent
 
     private bool IsParkedCorrectly()
     {
-        if (!parkingPlace.GetComponent<Collider>().bounds.Contains(transform.position))
+        // Vérifier si chaque roue touche le collider de la place de parking
+        bool isCorrectlyParked = true;
+        WheelCollider[] wheelColliders = { frontLeftWheelCollider, frontRightWheelCollider, rearLeftWheelCollider, rearRightWheelCollider };
+        Transform[] wheelTransforms = { frontLeftWheelTransform, frontRightWheelTransform, rearLeftWheelTransform, rearRightWheelTransform };
+
+        for (int i = 0; i < wheelColliders.Length; i++)
+        {
+            if (wheelColliders[i] == null || wheelTransforms[i] == null)
+            {
+                Debug.LogError("Missing reference to WheelCollider or WheelTransform.");
+                return false;
+            }
+
+            RaycastHit hit;
+            Vector3 rayStart = wheelTransforms[i].position;
+            Vector3 rayDirection = -wheelTransforms[i].up;
+
+            if (!Physics.Raycast(rayStart, rayDirection, out hit, wheelColliders[i].radius + 0.1f, 1 << parkingZoneLayer))
+            {
+                isCorrectlyParked = false;
+                break;
+            }
+        }
+
+        if (!isCorrectlyParked)
         {
             return false;
         }
+
+        // Vérifier l'alignement et la distance par rapport à la place de parking
         float dotProduct = Vector3.Dot(transform.forward, parkingPlace.transform.forward);
         if (Mathf.Abs(dotProduct) < 0.9f)
         {
