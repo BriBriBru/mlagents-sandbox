@@ -36,7 +36,7 @@ py -m venv mlagents-venv
 ```shell
 .\mlagents-venv\Scripts\activate
 ```
-If your system doesn't allow script execution, run the following command in PowerShell as administrator
+If your system doesn't allow script execution, run the following command in PowerShell as administrator :
 ```shell
 Set-ExecutionPolicy RemoteSigned
 ```
@@ -55,7 +55,8 @@ pip install packaging
 ```shell
 pip install numpy==1.21.2
 ```
-You might get this error : "error: Microsoft Visual C++ 14.0 is required.",
+You might get this error : "error: Microsoft Visual C++ 14.0 is required.".
+
 I saw that this could be fixed by installing the software [Visual Studio](https://visualstudio.microsoft.com/fr/vs/) with the module "Desktop development with C++"
 
 9. Install ML-Agents
@@ -102,6 +103,7 @@ mlagents-learn --run-id <name> --resume
 ### Settings
 
 **Use CUDA Toolkit**
+
 CUDA is a technology provided by NVIDIA that enables the computer to use the GPU instead of the CPU to perform general-purpose calculations in parallel.
 
 1. Check if you have the version 12.1 of the CUDA TOOKIT
