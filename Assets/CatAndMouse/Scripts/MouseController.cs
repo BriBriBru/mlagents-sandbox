@@ -21,8 +21,8 @@ public class MouseController : Agent
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
+        initialPosition = transform.localPosition;
+        initialRotation = transform.localRotation;
     }
 
     public override void OnEpisodeBegin()
@@ -94,6 +94,7 @@ public class MouseController : Agent
         if (collision.collider.CompareTag("Cat"))
         {
             AddReward(-20);
+            EndEpisode();
         }
     }
 }

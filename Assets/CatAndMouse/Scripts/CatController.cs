@@ -16,8 +16,8 @@ public class CatController : Agent
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
-        initialPosition = transform.position;
-        initialRotation = transform.rotation;
+        initialPosition = transform.localPosition;
+        initialRotation = transform.localRotation;
     }
 
     public override void OnEpisodeBegin()
