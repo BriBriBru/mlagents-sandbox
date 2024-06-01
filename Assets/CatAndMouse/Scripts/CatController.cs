@@ -44,7 +44,8 @@ public class CatController : Agent
     {
         if (collision.collider.CompareTag("Mouse"))
         {
-            AddReward(20f);
+            AddReward(50f);
+            EndEpisode();
         }
     }
 }

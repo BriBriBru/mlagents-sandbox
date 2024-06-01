@@ -9,7 +9,16 @@ public class MouseController : Agent
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float rotateSpeed = 100f;
 
+    [Header("Time")]
+    [SerializeField] private float timeToSurvive = 20f;
+
     private Rigidbody rb;
+    private bool gotCheese = false;
+
+    public override void OnEpisodeBegin()
+    {
+        gotCheese = false;
+    }
 
     public override void Initialize()
     {
@@ -38,5 +47,29 @@ public class MouseController : Agent
         ActionSegment<float> continousActions = actionsOut.ContinuousActions;
         continousActions[0] = Input.GetAxisRaw("Vertical");
         continousActions[1] = Input.GetAxisRaw("Horizontal");
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Cheese"))
+        {
+            AddReward(10f);
+            gotCheese = true;
+            Destroy(other.gameObject);
+        }
+
+        if (other.CompareTag("Exit") && gotCheese)
+        {
+            AddReward(30f);
+            EndEpisode();
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Cat"))
+        {
+            AddReward(-20);
+        }
     }
 }

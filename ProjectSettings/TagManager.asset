@@ -8,6 +8,8 @@ TagManager:
   - Pellet
   - Cat
   - Mouse
+  - Cheese
+  - Exit
   layers:
   - Default
   - TransparentFX
