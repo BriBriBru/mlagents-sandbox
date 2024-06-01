@@ -12,17 +12,25 @@ public class MouseController : Agent
     [Header("Time")]
     [SerializeField] private float timeToSurvive = 20f;
 
+    private float currentTime = 0f;
     private Rigidbody rb;
     private bool gotCheese = false;
-
-    public override void OnEpisodeBegin()
-    {
-        gotCheese = false;
-    }
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
 
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+    }
+
+    public override void OnEpisodeBegin()
+    {
+        gotCheese = false;
+        currentTime = 0f;
+        transform.localPosition = initialPosition;
+        transform.localRotation = initialRotation;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -49,6 +57,16 @@ public class MouseController : Agent
         continousActions[1] = Input.GetAxisRaw("Horizontal");
     }
 
+    void Update()
+    {
+        currentTime = Time.time;
+        if (currentTime >= timeToSurvive)
+        {
+            AddReward(5f);
+            currentTime = 0f;
+        }
+    }
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Cheese"))
@@ -61,6 +79,12 @@ public class MouseController : Agent
         if (other.CompareTag("Exit") && gotCheese)
         {
             AddReward(30f);
+            EndEpisode();
+        }
+
+        if (other.CompareTag("Wall"))
+        {
+            AddReward(-10);
             EndEpisode();
         }
     }

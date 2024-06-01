@@ -10,10 +10,20 @@ public class CatController : Agent
     [SerializeField] private float rotateSpeed = 100f;
 
     private Rigidbody rb;
+    private Vector3 initialPosition;
+    private Quaternion initialRotation;
 
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
+        initialPosition = transform.position;
+        initialRotation = transform.rotation;
+    }
+
+    public override void OnEpisodeBegin()
+    {
+        transform.localPosition = initialPosition;
+        transform.localRotation = initialRotation;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -40,7 +50,16 @@ public class CatController : Agent
         continousActions[1] = Input.GetAxisRaw("Horizontal");
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Wall"))
+        {
+            AddReward(-10);
+            EndEpisode();
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Mouse"))
         {
