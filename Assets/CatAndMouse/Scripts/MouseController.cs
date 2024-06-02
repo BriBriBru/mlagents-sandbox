@@ -12,7 +12,6 @@ public class MouseController : Agent
     [Header("Time")]
     [SerializeField] private float timeToSurvive = 20f;
 
-    private float currentTime = 0f;
     private Rigidbody rb;
     private bool gotCheese = false;
     private Vector3 initialPosition;
@@ -28,7 +27,6 @@ public class MouseController : Agent
     public override void OnEpisodeBegin()
     {
         gotCheese = false;
-        currentTime = 0f;
         transform.localPosition = initialPosition;
         transform.localRotation = initialRotation;
     }
@@ -55,16 +53,6 @@ public class MouseController : Agent
         ActionSegment<float> continousActions = actionsOut.ContinuousActions;
         continousActions[0] = Input.GetAxisRaw("Vertical");
         continousActions[1] = Input.GetAxisRaw("Horizontal");
-    }
-
-    void Update()
-    {
-        currentTime = Time.time;
-        if (currentTime >= timeToSurvive)
-        {
-            AddReward(5f);
-            currentTime = 0f;
-        }
     }
 
     void OnTriggerEnter(Collider other)
