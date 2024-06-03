@@ -9,8 +9,8 @@ public class MouseController : Agent
     [SerializeField] private float moveSpeed = 10f;
     [SerializeField] private float rotateSpeed = 100f;
 
-    [Header("Time")]
-    [SerializeField] private float timeToSurvive = 20f;
+    [Header("Environment")]
+    [SerializeField] private GameObject cheese;
 
     private Rigidbody rb;
     private bool gotCheese = false;
@@ -27,6 +27,7 @@ public class MouseController : Agent
     public override void OnEpisodeBegin()
     {
         gotCheese = false;
+        cheese.SetActive(true);
         transform.localPosition = initialPosition;
         transform.localRotation = initialRotation;
     }
@@ -59,14 +60,14 @@ public class MouseController : Agent
     {
         if (other.CompareTag("Cheese"))
         {
-            AddReward(10f);
+            AddReward(20f);
             gotCheese = true;
-            Destroy(other.gameObject);
+            cheese.SetActive(false);
         }
 
         if (other.CompareTag("Exit") && gotCheese)
         {
-            AddReward(30f);
+            AddReward(50f);
             EndEpisode();
         }
 

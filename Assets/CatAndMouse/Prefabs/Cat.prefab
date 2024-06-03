@@ -48,8 +48,8 @@ MonoBehaviour:
   m_DetectableTags:
   - Mouse
   - Wall
-  m_RaysPerDirection: 3
-  m_MaxRayDegrees: 70
+  m_RaysPerDirection: 7
+  m_MaxRayDegrees: 60
   m_SphereCastRadius: 0.5
   m_RayLength: 20
   m_RayLayerMask:
@@ -93,7 +93,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.6935275, z: 0, w: 0.7204302}
   m_LocalPosition: {x: -21.49, y: 0.5, z: -21.76}
-  m_LocalScale: {x: 2, y: 1, z: 2}
+  m_LocalScale: {x: 1.3, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9080321438371639929}
@@ -221,7 +221,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 1
   m_BehaviorName: Cat
   TeamId: 0
   m_UseChildSensors: 1
