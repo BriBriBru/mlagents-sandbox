@@ -92,7 +92,7 @@ public class MouseController : Agent
 
     void ChangePlaneColor(Color newColor)
     {
-        Material material = plane.GetComponent<Material>();
+        Material material = plane.GetComponent<Renderer>().material;
         material.color = newColor;
     }
 }
