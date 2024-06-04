@@ -11,6 +11,7 @@ public class MouseController : Agent
 
     [Header("Environment")]
     [SerializeField] private GameObject cheese;
+    [SerializeField] private GameObject plane;
 
     private Rigidbody rb;
     private bool gotCheese = false;
@@ -68,6 +69,7 @@ public class MouseController : Agent
         if (other.CompareTag("Exit") && gotCheese)
         {
             AddReward(50f);
+            ChangePlaneColor(Color.green);
             EndEpisode();
         }
 
@@ -83,7 +85,14 @@ public class MouseController : Agent
         if (collision.collider.CompareTag("Cat"))
         {
             AddReward(-20);
+            ChangePlaneColor(Color.red);
             EndEpisode();
         }
+    }
+
+    void ChangePlaneColor(Color newColor)
+    {
+        Material material = plane.GetComponent<Material>();
+        material.color = newColor;
     }
 }
