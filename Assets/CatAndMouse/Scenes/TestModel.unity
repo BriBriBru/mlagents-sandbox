@@ -123,7 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &205081120
+--- !u!1001 &271047927
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -131,18 +131,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1844941446509002187, guid: 9450497deab486b4dbcd63974eadcd7d, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 5022602860645237092, guid: 877f7b66fa1ef264699b53748ab68063, type: 3}
-    - target: {fileID: 3616409362244628813, guid: 9450497deab486b4dbcd63974eadcd7d, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 5022602860645237092, guid: 5857662b0785c18408b98df717ba4fcc, type: 3}
-    - target: {fileID: 6634103817356883882, guid: 9450497deab486b4dbcd63974eadcd7d, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 5022602860645237092, guid: 5857662b0785c18408b98df717ba4fcc, type: 3}
     - target: {fileID: 6674031251374805884, guid: 9450497deab486b4dbcd63974eadcd7d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -187,10 +175,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Environment
       objectReference: {fileID: 0}
-    - target: {fileID: 7822643879995729806, guid: 9450497deab486b4dbcd63974eadcd7d, type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 5022602860645237092, guid: 5857662b0785c18408b98df717ba4fcc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -388,4 +372,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 282359409}
   - {fileID: 619139189}
-  - {fileID: 205081120}
+  - {fileID: 271047927}
