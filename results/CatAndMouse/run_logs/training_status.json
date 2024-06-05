@@ -1,0 +1,123 @@
+{
+    "Mouse": {
+        "checkpoints": [
+            {
+                "steps": 3499934,
+                "file_path": "results\\CatAndMouseBis\\Mouse\\Mouse-3499934.onnx",
+                "reward": 50.86330935251799,
+                "creation_time": 1717590355.0280478,
+                "auxillary_file_paths": [
+                    "results\\CatAndMouseBis\\Mouse\\Mouse-3499934.pt"
+                ]
+            },
+            {
+                "steps": 3999966,
+                "file_path": "results\\CatAndMouseBis\\Mouse\\Mouse-3999966.onnx",
+                "reward": 50.08130081300813,
+                "creation_time": 1717590904.2493517,
+                "auxillary_file_paths": [
+                    "results\\CatAndMouseBis\\Mouse\\Mouse-3999966.pt"
+                ]
+            },
+            {
+                "steps": 4499933,
+                "file_path": "results\\CatAndMouseBis\\Mouse\\Mouse-4499933.onnx",
+                "reward": 51.0,
+                "creation_time": 1717591452.2344024,
+                "auxillary_file_paths": [
+                    "results\\CatAndMouseBis\\Mouse\\Mouse-4499933.pt"
+                ]
+            },
+            {
+                "steps": 4999951,
+                "file_path": "results\\CatAndMouseBis\\Mouse\\Mouse-4999951.onnx",
+                "reward": 33.987730061349694,
+                "creation_time": 1717591991.5636797,
+                "auxillary_file_paths": [
+                    "results\\CatAndMouseBis\\Mouse\\Mouse-4999951.pt"
+                ]
+            },
+            {
+                "steps": 5063955,
+                "file_path": "results\\CatAndMouseBis\\Mouse\\Mouse-5063955.onnx",
+                "reward": 39.41901408450704,
+                "creation_time": 1717592054.3767765,
+                "auxillary_file_paths": [
+                    "results\\CatAndMouseBis\\Mouse\\Mouse-5063955.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5063955,
+            "file_path": "results\\CatAndMouseBis\\Mouse.onnx",
+            "reward": 39.41901408450704,
+            "creation_time": 1717592054.3767765,
+            "auxillary_file_paths": [
+                "results\\CatAndMouseBis\\Mouse\\Mouse-5063955.pt"
+            ]
+        }
+    },
+    "Cat": {
+        "checkpoints": [
+            {
+                "steps": 3499713,
+                "file_path": "results\\CatAndMouseBis\\Cat\\Cat-3499713.onnx",
+                "reward": 20.0,
+                "creation_time": 1717590457.5489292,
+                "auxillary_file_paths": [
+                    "results\\CatAndMouseBis\\Cat\\Cat-3499713.pt"
+                ]
+            },
+            {
+                "steps": 3999894,
+                "file_path": "results\\CatAndMouseBis\\Cat\\Cat-3999894.onnx",
+                "reward": 5.0,
+                "creation_time": 1717590995.43351,
+                "auxillary_file_paths": [
+                    "results\\CatAndMouseBis\\Cat\\Cat-3999894.pt"
+                ]
+            },
+            {
+                "steps": 4499169,
+                "file_path": "results\\CatAndMouseBis\\Cat\\Cat-4499169.onnx",
+                "reward": 17.0,
+                "creation_time": 1717591529.6327875,
+                "auxillary_file_paths": [
+                    "results\\CatAndMouseBis\\Cat\\Cat-4499169.pt"
+                ]
+            },
+            {
+                "steps": 4999972,
+                "file_path": "results\\CatAndMouseBis\\Cat\\Cat-4999972.onnx",
+                "reward": 20.0,
+                "creation_time": 1717592054.24342,
+                "auxillary_file_paths": [
+                    "results\\CatAndMouseBis\\Cat\\Cat-4999972.pt"
+                ]
+            },
+            {
+                "steps": 5000546,
+                "file_path": "results\\CatAndMouseBis\\Cat\\Cat-5000546.onnx",
+                "reward": 20.0,
+                "creation_time": 1717592054.5121455,
+                "auxillary_file_paths": [
+                    "results\\CatAndMouseBis\\Cat\\Cat-5000546.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 5000546,
+            "file_path": "results\\CatAndMouseBis\\Cat.onnx",
+            "reward": 20.0,
+            "creation_time": 1717592054.5121455,
+            "auxillary_file_paths": [
+                "results\\CatAndMouseBis\\Cat\\Cat-5000546.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.3.0+cu121"
+    }
+}

@@ -61,8 +61,9 @@ public class MouseController : Agent
     {
         if (other.CompareTag("Cheese"))
         {
-            AddReward(20f);
+            AddReward(10f);
             gotCheese = true;
+            ChangePlaneColor(Color.yellow);
             cheese.SetActive(false);
         }
 
@@ -84,7 +85,7 @@ public class MouseController : Agent
     {
         if (collision.collider.CompareTag("Cat"))
         {
-            AddReward(-20);
+            AddReward(-30);
             ChangePlaneColor(Color.red);
             EndEpisode();
         }

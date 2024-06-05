@@ -1276,7 +1276,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: Cat
   TeamId: 0
   m_UseChildSensors: 1
@@ -1298,7 +1298,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
-  moveSpeed: 5
+  moveSpeed: 6.4
   rotateSpeed: 130
 --- !u!114 &1148119213060560345
 MonoBehaviour:
