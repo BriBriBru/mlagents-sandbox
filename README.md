@@ -3,18 +3,22 @@
 Fun and personal projects to build and reinforce ML-Agents and Unity 3D skills.
 
 **Table of contents**
+
 - [Prerequisites](#prerequisites)
 - [Setup ML-Agents](#setup-ml-agents)
 - [Training with ML-Agents](#training-with-ml-agents)
    - [Run training session](#run-training-session)
    - [Settings](#settings)
+      - [Use CUDA toolkit](#use-cuda-toolkit)
+      - [Use trainer configuration file](#use-trainer-configuration-file)
+      - [Visualization with Tensorboard](#visualization-with-tensorboard)
 
-## Prerequisites
+## **Prerequisites**
 
 * [Python 3.10.0](https://www.python.org/downloads/release/python-3100/)
 * [Unity 2022.3.23f1](https://download.unity3d.com/download_unity/dbb3f7c5b5c6/Windows64EditorInstaller/UnitySetup64-2022.3.23f1.exe)
 
-## Setup ML-Agents
+## **Setup ML-Agents**
 
 OS used : Windows 11 64 bits
 
@@ -87,9 +91,9 @@ mlagents-learn --help
 If it doesn't work, good luck!
 Fix all errors until the command in step 9. doesn't display any error
 
-## Training with ML-Agents
+## **Training with ML-Agents**
 
-### Run training session
+### **Run training session**
 
 - Start training
 ```shell
@@ -100,9 +104,9 @@ mlagents-learn --run-id <name>
 mlagents-learn --run-id <name> --resume
 ```
 
-### Settings
+### **Settings**
 
-**Use CUDA Toolkit**
+#### **Use CUDA Toolkit**
 
 CUDA is a technology provided by NVIDIA that enables the computer to use the GPU instead of the CPU to perform general-purpose calculations in parallel.
 
@@ -123,10 +127,18 @@ import torch
 torch.cuda.is_available() # Need to be True
 ```
 
-**Use trainer configuration file**
+#### **Use trainer configuration file**
 
 ```shell
 mlagents-learn <trainer-config-file> --run-id <name>
 ```
 
 Where `trainer-config-file` is the relative path of the YAML trainer configuration file. This file contains all hyperparameters values and other settings such as the type of training.
+
+#### **Visualization with Tensorboard**
+
+```shell
+tensorboard --logdir results
+```
+
+Then open the localhost link.
