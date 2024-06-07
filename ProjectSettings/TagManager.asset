@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Wall
+  - Pellet
+  - Cat
+  - Mouse
+  - Cheese
+  - Exit
   layers:
   - Default
   - TransparentFX
