@@ -14,9 +14,11 @@ public class BoardAgentController : Agent
     [Header("Gameplay properties")]
     [SerializeField] private float rotateBoardSpeed = 100f;
     [SerializeField] private float isFallenThreshold = -0.5f;
+    [SerializeField] private float timeLimit = 20f;
     private Vector3 initialBallPosition;
     private Quaternion initialBoardRotation;
     private Vector3 currentRotation;
+    private float episodeTime;
 
     public override void Initialize()
     {
@@ -24,6 +26,7 @@ public class BoardAgentController : Agent
         initialBallPosition = ballRigidBody.transform.localPosition;
         initialBoardRotation = gameObject.transform.localRotation;
         currentRotation = Vector3.zero;
+        episodeTime = 0f;
     }
 
     public override void OnEpisodeBegin()
@@ -32,7 +35,7 @@ public class BoardAgentController : Agent
         ball.transform.localPosition = initialBallPosition;
         currentRotation = Vector3.zero;
         ballRigidBody.velocity = new Vector3(0.05f, 0.05f, 0.05f);
-        ChangeBoardColor(Color.green);
+        episodeTime = 0f;
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -55,11 +58,18 @@ public class BoardAgentController : Agent
 
         gameObject.transform.localEulerAngles = currentRotation;
 
+        episodeTime += Time.deltaTime;
+
         if (ball.transform.localPosition.y <= isFallenThreshold)
         {
             AddReward(-50f);
             ChangeBoardColor(Color.red);
             EndEpisode();
+        }
+
+        else if (episodeTime >= timeLimit)
+        {
+            ChangeBoardColor(Color.green);
         }
 
         else
