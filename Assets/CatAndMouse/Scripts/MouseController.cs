@@ -15,22 +15,18 @@ public class MouseController : Agent
 
     private Rigidbody rb;
     private bool gotCheese = false;
-    private Vector3 initialPosition;
-    private Quaternion initialRotation;
 
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
-        initialPosition = transform.localPosition;
-        initialRotation = transform.localRotation;
     }
 
     public override void OnEpisodeBegin()
     {
         gotCheese = false;
         cheese.SetActive(true);
-        transform.localPosition = initialPosition;
-        transform.localRotation = initialRotation;
+        SpawnManager.Instance.RandomSpawn(gameObject);
+        SpawnManager.Instance.RandomSpawn(cheese);
     }
 
     public override void CollectObservations(VectorSensor sensor)

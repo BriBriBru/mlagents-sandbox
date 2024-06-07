@@ -8,6 +8,9 @@ Fun and personal projects to build and reinforce ML-Agents and Unity 3D skills.
 - [Setup ML-Agents](#setup-ml-agents)
 - [Training with ML-Agents](#training-with-ml-agents)
    - [Run training session](#run-training-session)
+      - [Start training](#start-training)
+      - [Resume training](#resume-training)
+      - [Improve brain model](#improve-brain-model)
    - [Settings](#settings)
       - [Use CUDA toolkit](#use-cuda-toolkit)
       - [Use trainer configuration file](#use-trainer-configuration-file)
@@ -95,14 +98,23 @@ Fix all errors until the command in step 9. doesn't display any error
 
 ### **Run training session**
 
-- Start training
+#### **Start training**
 ```shell
 mlagents-learn --run-id <name>
 ```
-- Resume training
+
+#### **Resume training**
 ```shell
 mlagents-learn --run-id <name> --resume
 ```
+
+#### **Improve brain model**
+```shell
+mlagents-learn --initialize-from <old-brain-name> --run-id <new-brain-name>
+```
+Where :
+- `old-brain-name` refers to the folder of the id run that contains the brain previously used (in "results" folder)
+- `new-brain-name` is the name of the new brain
 
 ### **Settings**
 

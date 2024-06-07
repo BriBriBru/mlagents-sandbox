@@ -16,14 +16,11 @@ public class CatController : Agent
     public override void Initialize()
     {
         rb = GetComponent<Rigidbody>();
-        initialPosition = transform.localPosition;
-        initialRotation = transform.localRotation;
     }
 
     public override void OnEpisodeBegin()
     {
-        transform.localPosition = initialPosition;
-        transform.localRotation = initialRotation;
+        SpawnManager.Instance.RandomSpawn(gameObject);
     }
 
     public override void CollectObservations(VectorSensor sensor)
