@@ -15,6 +15,7 @@ public class BoardAgentController : Agent
     [SerializeField] private float rotateBoardSpeed = 100f;
     [SerializeField] private float isFallenThreshold = -0.5f;
     [SerializeField] private float timeLimit = 20f;
+    [SerializeField] private float maxBoardAngle = 30f;
     private Vector3 initialBallPosition;
     private Quaternion initialBoardRotation;
     private Vector3 currentRotation;
@@ -34,8 +35,13 @@ public class BoardAgentController : Agent
         gameObject.transform.localRotation = initialBoardRotation;
         ball.transform.localPosition = initialBallPosition;
         currentRotation = Vector3.zero;
-        ballRigidBody.velocity = new Vector3(0.05f, 0.05f, 0.05f);
         episodeTime = 0f;
+
+        float x = Random.Range(0.01f, 0.05f);
+        float y = Random.Range(0.01f, 0.05f);
+        float z = Random.Range(0.01f, 0.05f);
+        ballRigidBody.velocity = new Vector3(x, y, z);
+
     }
 
     public override void CollectObservations(VectorSensor sensor)
@@ -53,8 +59,8 @@ public class BoardAgentController : Agent
         currentRotation.x += rotateBoardSpeed * xRotateRate * Time.deltaTime;
         currentRotation.z += rotateBoardSpeed * zRotateRate * Time.deltaTime;
 
-        currentRotation.x = Mathf.Clamp(currentRotation.x, -30f, 30f);
-        currentRotation.z = Mathf.Clamp(currentRotation.z, -30f, 30f);
+        currentRotation.x = Mathf.Clamp(currentRotation.x, -maxBoardAngle, maxBoardAngle);
+        currentRotation.z = Mathf.Clamp(currentRotation.z, -maxBoardAngle, maxBoardAngle);
 
         gameObject.transform.localEulerAngles = currentRotation;
 
@@ -67,14 +73,14 @@ public class BoardAgentController : Agent
             EndEpisode();
         }
 
-        else if (episodeTime >= timeLimit)
-        {
-            ChangeBoardColor(Color.green);
-        }
-
         else
         {
             AddReward(0.1f);
+        }
+
+        if (episodeTime >= timeLimit)
+        {
+            ChangeBoardColor(Color.green);
         }
     }
 
