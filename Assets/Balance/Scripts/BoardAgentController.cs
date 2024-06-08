@@ -16,37 +16,38 @@ public class BoardAgentController : Agent
     [SerializeField] private float isFallenThreshold = -0.5f;
     [SerializeField] private float timeLimit = 20f;
     [SerializeField] private float maxBoardAngle = 30f;
-    private Vector3 initialBallPosition;
-    private Quaternion initialBoardRotation;
-    private Vector3 currentRotation;
     private float episodeTime;
+    private Vector3 initialBallPosition;
 
     public override void Initialize()
     {
         ballRigidBody = ball.GetComponent<Rigidbody>();
-        initialBallPosition = ballRigidBody.transform.localPosition;
-        initialBoardRotation = gameObject.transform.localRotation;
-        currentRotation = Vector3.zero;
         episodeTime = 0f;
+        initialBallPosition = ballRigidBody.transform.localPosition;
     }
 
     public override void OnEpisodeBegin()
     {
-        gameObject.transform.localRotation = initialBoardRotation;
+        // Board random initial angle
+        float xBoardRotation = Random.Range(0f, maxBoardAngle);
+        float yBoardRotation = Random.Range(0f, 360f);
+        float zBoardRotation = Random.Range(0f, maxBoardAngle);
+        gameObject.transform.localEulerAngles = new Vector3(xBoardRotation, yBoardRotation, zBoardRotation);
+
+        // Ball initial position
         ball.transform.localPosition = initialBallPosition;
-        currentRotation = Vector3.zero;
+
+        // Ball initial velocity
+        ballRigidBody.velocity = Vector3.zero;
+
+        // Other
         episodeTime = 0f;
-
-        float x = Random.Range(0.01f, 0.05f);
-        float y = Random.Range(0.01f, 0.05f);
-        float z = Random.Range(0.01f, 0.05f);
-        ballRigidBody.velocity = new Vector3(x, y, z);
-
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(gameObject.transform.localRotation);
+        //sensor.AddObservation(gameObject.transform.localRotation);
+        sensor.AddObservation(gameObject.transform.localEulerAngles);
         sensor.AddObservation(ball.transform.localPosition);
         sensor.AddObservation(ballRigidBody.velocity);
     }
@@ -56,13 +57,14 @@ public class BoardAgentController : Agent
         float xRotateRate = actions.ContinuousActions[0];
         float zRotateRate = actions.ContinuousActions[1];
 
-        currentRotation.x += rotateBoardSpeed * xRotateRate * Time.deltaTime;
-        currentRotation.z += rotateBoardSpeed * zRotateRate * Time.deltaTime;
+        Vector3 newRotation = gameObject.transform.localEulerAngles;
+        newRotation.x += rotateBoardSpeed * xRotateRate * Time.deltaTime;
+        newRotation.z += rotateBoardSpeed * zRotateRate * Time.deltaTime;
 
-        currentRotation.x = Mathf.Clamp(currentRotation.x, -maxBoardAngle, maxBoardAngle);
-        currentRotation.z = Mathf.Clamp(currentRotation.z, -maxBoardAngle, maxBoardAngle);
+        newRotation.x = Mathf.Clamp(newRotation.x, -maxBoardAngle, maxBoardAngle);
+        newRotation.z = Mathf.Clamp(newRotation.z, -maxBoardAngle, maxBoardAngle);
 
-        gameObject.transform.localEulerAngles = currentRotation;
+        gameObject.transform.localEulerAngles = newRotation;
 
         episodeTime += Time.deltaTime;
 
@@ -83,6 +85,7 @@ public class BoardAgentController : Agent
             ChangeBoardColor(Color.green);
         }
     }
+
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {

@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 10
+    VectorObservationSize: 9
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 2
@@ -157,6 +157,8 @@ MonoBehaviour:
   ball: {fileID: 7790177151341122477}
   rotateBoardSpeed: 100
   isFallenThreshold: -0.5
+  timeLimit: 20
+  maxBoardAngle: 30
 --- !u!114 &7005542401350681720
 MonoBehaviour:
   m_ObjectHideFlags: 0
