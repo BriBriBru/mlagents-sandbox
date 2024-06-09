@@ -1,0 +1,47 @@
+{
+    "BalanceBoardWith2Balls": {
+        "checkpoints": [
+            {
+                "steps": 499896,
+                "file_path": "results\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls-499896.onnx",
+                "reward": 170.6043486180513,
+                "creation_time": 1717946362.3698251,
+                "auxillary_file_paths": [
+                    "results\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls-499896.pt"
+                ]
+            },
+            {
+                "steps": 999184,
+                "file_path": "results\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls-999184.onnx",
+                "reward": null,
+                "creation_time": 1717947086.2787182,
+                "auxillary_file_paths": [
+                    "results\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls-999184.pt"
+                ]
+            },
+            {
+                "steps": 1000184,
+                "file_path": "results\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls-1000184.onnx",
+                "reward": null,
+                "creation_time": 1717947086.622654,
+                "auxillary_file_paths": [
+                    "results\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls-1000184.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1000184,
+            "file_path": "results\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls.onnx",
+            "reward": null,
+            "creation_time": 1717947086.622654,
+            "auxillary_file_paths": [
+                "results\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls\\BalanceBoardWith2Balls-1000184.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.3.0+cpu"
+    }
+}

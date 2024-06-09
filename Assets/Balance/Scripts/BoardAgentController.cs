@@ -9,7 +9,9 @@ public class BoardAgentController : Agent
 {
     [Header("References")]
     [SerializeField] private GameObject ball;
+    [SerializeField] private GameObject secondBall;
     private Rigidbody ballRigidBody;
+    private Rigidbody secondBallRigidBody;
 
     [Header("Gameplay properties")]
     [SerializeField] private float rotateBoardSpeed = 100f;
@@ -18,30 +20,31 @@ public class BoardAgentController : Agent
     [SerializeField] private float maxInitialBoardAngle = 80f;
 
     private Vector3 initialBallPosition;
+    private Vector3 initialSecondBallPosition;
     private float episodeTime;
 
     public override void Initialize()
     {
         ballRigidBody = ball.GetComponent<Rigidbody>();
+        secondBallRigidBody = secondBall.GetComponent<Rigidbody>();
         episodeTime = 0f;
         initialBallPosition = ballRigidBody.transform.localPosition;
+        initialSecondBallPosition = secondBallRigidBody.transform.localPosition;
     }
 
     public override void OnEpisodeBegin()
     {
-        // Board random initial angle
         float xBoardRotation = Random.Range(0f, maxInitialBoardAngle);
         float yBoardRotation = Random.Range(0f, 360f);
         float zBoardRotation = Random.Range(0f, maxInitialBoardAngle);
         gameObject.transform.localEulerAngles = new Vector3(xBoardRotation, yBoardRotation, zBoardRotation);
 
-        // Ball initial position
         ball.transform.localPosition = initialBallPosition;
+        secondBall.transform.localPosition = initialSecondBallPosition;
 
-        // Ball initial velocity
         ballRigidBody.velocity = Vector3.zero;
+        secondBallRigidBody.velocity = Vector3.zero;
 
-        // Other
         episodeTime = 0f;
     }
 
@@ -50,6 +53,8 @@ public class BoardAgentController : Agent
         sensor.AddObservation(gameObject.transform.localEulerAngles);
         sensor.AddObservation(ball.transform.localPosition);
         sensor.AddObservation(ballRigidBody.velocity);
+        sensor.AddObservation(secondBall.transform.localPosition);
+        sensor.AddObservation(secondBallRigidBody.velocity);
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -67,9 +72,9 @@ public class BoardAgentController : Agent
 
         episodeTime += Time.deltaTime;
 
-        if (ball.transform.localPosition.y <= isFallenThreshold)
+        if (ball.transform.localPosition.y <= isFallenThreshold || secondBall.transform.localPosition.y <= isFallenThreshold)
         {
-            AddReward(-50f);
+            AddReward(-5f);
             ChangeBoardColor(Color.red);
             EndEpisode();
         }
