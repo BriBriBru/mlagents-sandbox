@@ -132,7 +132,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 0
-  m_BehaviorType: 1
+  m_BehaviorType: 0
   m_BehaviorName: BalanceBoard
   TeamId: 0
   m_UseChildSensors: 1
@@ -155,10 +155,10 @@ MonoBehaviour:
   hasUpgradedFromAgentParameters: 1
   MaxStep: 0
   ball: {fileID: 7790177151341122477}
-  rotateBoardSpeed: 100
+  rotateBoardSpeed: 130
   isFallenThreshold: -0.5
   timeLimit: 20
-  maxBoardAngle: 30
+  maxInitialBoardAngle: 80
 --- !u!114 &7005542401350681720
 MonoBehaviour:
   m_ObjectHideFlags: 0

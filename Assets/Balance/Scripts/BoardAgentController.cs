@@ -15,7 +15,7 @@ public class BoardAgentController : Agent
     [SerializeField] private float rotateBoardSpeed = 100f;
     [SerializeField] private float isFallenThreshold = -0.5f;
     [SerializeField] private float timeLimit = 20f;
-    [SerializeField] private float maxBoardAngle = 30f;
+    [SerializeField] private float maxInitialBoardAngle = 80f;
 
     private Vector3 initialBallPosition;
     private float episodeTime;
@@ -30,9 +30,9 @@ public class BoardAgentController : Agent
     public override void OnEpisodeBegin()
     {
         // Board random initial angle
-        float xBoardRotation = Random.Range(0f, maxBoardAngle);
+        float xBoardRotation = Random.Range(0f, maxInitialBoardAngle);
         float yBoardRotation = Random.Range(0f, 360f);
-        float zBoardRotation = Random.Range(0f, maxBoardAngle);
+        float zBoardRotation = Random.Range(0f, maxInitialBoardAngle);
         gameObject.transform.localEulerAngles = new Vector3(xBoardRotation, yBoardRotation, zBoardRotation);
 
         // Ball initial position
@@ -57,14 +57,13 @@ public class BoardAgentController : Agent
         float xRotateRate = actions.ContinuousActions[0];
         float zRotateRate = actions.ContinuousActions[1];
 
-        Vector3 newRotation = gameObject.transform.localEulerAngles;
-        newRotation.x += rotateBoardSpeed * xRotateRate * Time.deltaTime;
-        newRotation.z += rotateBoardSpeed * zRotateRate * Time.deltaTime;
+        xRotateRate = Mathf.Clamp(xRotateRate, -1f, 1f);
+        zRotateRate = Mathf.Clamp(zRotateRate, -1f, 1f);
 
-        newRotation.x = Mathf.Clamp(newRotation.x, -maxBoardAngle, maxBoardAngle);
-        newRotation.z = Mathf.Clamp(newRotation.z, -maxBoardAngle, maxBoardAngle);
+        float xRotation = xRotateRate * rotateBoardSpeed * Time.deltaTime;
+        float zRotation = zRotateRate * rotateBoardSpeed * Time.deltaTime;
 
-        gameObject.transform.localEulerAngles = newRotation;
+        gameObject.transform.Rotate(xRotation, 0f, zRotation, Space.Self);
 
         episodeTime += Time.deltaTime;
 
@@ -85,7 +84,6 @@ public class BoardAgentController : Agent
             ChangeBoardColor(Color.green);
         }
     }
-
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
