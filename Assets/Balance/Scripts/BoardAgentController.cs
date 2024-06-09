@@ -15,8 +15,9 @@ public class BoardAgentController : Agent
     [SerializeField] private float rotateBoardSpeed = 100f;
     [SerializeField] private float isFallenThreshold = -0.5f;
     [SerializeField] private float timeLimit = 20f;
+    [SerializeField] private float maxBoardAngle = 30f;
+
     private Vector3 initialBallPosition;
-    private Vector3 currentRotation;
     private float episodeTime;
 
     public override void Initialize()
@@ -28,9 +29,19 @@ public class BoardAgentController : Agent
 
     public override void OnEpisodeBegin()
     {
+        // Board random initial angle
+        float xBoardRotation = Random.Range(0f, maxBoardAngle);
+        float yBoardRotation = Random.Range(0f, 360f);
+        float zBoardRotation = Random.Range(0f, maxBoardAngle);
+        gameObject.transform.localEulerAngles = new Vector3(xBoardRotation, yBoardRotation, zBoardRotation);
+
+        // Ball initial position
         ball.transform.localPosition = initialBallPosition;
-        currentRotation = Vector3.zero;
-        ballRigidBody.velocity = new Vector3(0.05f, 0.05f, 0.05f);
+
+        // Ball initial velocity
+        ballRigidBody.velocity = Vector3.zero;
+
+        // Other
         episodeTime = 0f;
     }
 
@@ -50,8 +61,8 @@ public class BoardAgentController : Agent
         newRotation.x += rotateBoardSpeed * xRotateRate * Time.deltaTime;
         newRotation.z += rotateBoardSpeed * zRotateRate * Time.deltaTime;
 
-        currentRotation.x = Mathf.Clamp(currentRotation.x, -30f, 30f);
-        currentRotation.z = Mathf.Clamp(currentRotation.z, -30f, 30f);
+        newRotation.x = Mathf.Clamp(newRotation.x, -maxBoardAngle, maxBoardAngle);
+        newRotation.z = Mathf.Clamp(newRotation.z, -maxBoardAngle, maxBoardAngle);
 
         gameObject.transform.localEulerAngles = newRotation;
 
@@ -64,14 +75,14 @@ public class BoardAgentController : Agent
             EndEpisode();
         }
 
-        else if (episodeTime >= timeLimit)
-        {
-            ChangeBoardColor(Color.green);
-        }
-
         else
         {
             AddReward(0.1f);
+        }
+
+        if (episodeTime >= timeLimit)
+        {
+            ChangeBoardColor(Color.green);
         }
     }
 
