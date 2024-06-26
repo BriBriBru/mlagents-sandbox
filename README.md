@@ -75,6 +75,7 @@ pip install mlagents
 ```shell
 pip install torch torchvision torchaudio
 ```
+You can also use CUDA toolkit is your device is compatible : [Use CUDA toolkit](#use-cuda-toolkit)
 
 11. Change Protobuf version to 3.20.3
 ```shell
