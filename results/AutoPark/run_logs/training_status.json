@@ -1,0 +1,101 @@
+{
+    "AutoParkCar": {
+        "checkpoints": [
+            {
+                "steps": 6999712,
+                "file_path": "results\\AutoPark\\AutoParkCar\\AutoParkCar-6999712.onnx",
+                "reward": 553.442264332083,
+                "creation_time": 1726390137.087731,
+                "auxillary_file_paths": [
+                    "results\\AutoPark\\AutoParkCar\\AutoParkCar-6999712.pt"
+                ]
+            },
+            {
+                "steps": 7499298,
+                "file_path": "results\\AutoPark\\AutoParkCar\\AutoParkCar-7499298.onnx",
+                "reward": 553.2010332166534,
+                "creation_time": 1726392337.1061175,
+                "auxillary_file_paths": [
+                    "results\\AutoPark\\AutoParkCar\\AutoParkCar-7499298.pt"
+                ]
+            },
+            {
+                "steps": 7999986,
+                "file_path": "results\\AutoPark\\AutoParkCar\\AutoParkCar-7999986.onnx",
+                "reward": 553.738825119753,
+                "creation_time": 1726392414.441226,
+                "auxillary_file_paths": [
+                    "results\\AutoPark\\AutoParkCar\\AutoParkCar-7999986.pt"
+                ]
+            },
+            {
+                "steps": 8499805,
+                "file_path": "results\\AutoPark\\AutoParkCar\\AutoParkCar-8499805.onnx",
+                "reward": 549.9675663612984,
+                "creation_time": 1726394019.041429,
+                "auxillary_file_paths": [
+                    "results\\AutoPark\\AutoParkCar\\AutoParkCar-8499805.pt"
+                ]
+            },
+            {
+                "steps": 8999200,
+                "file_path": "results\\AutoPark\\AutoParkCar\\AutoParkCar-8999200.onnx",
+                "reward": 551.3066514187692,
+                "creation_time": 1726394339.3793662,
+                "auxillary_file_paths": [
+                    "results\\AutoPark\\AutoParkCar\\AutoParkCar-8999200.pt"
+                ]
+            },
+            {
+                "steps": 9499063,
+                "file_path": "results\\AutoPark\\AutoParkCar\\AutoParkCar-9499063.onnx",
+                "reward": 551.1168572369277,
+                "creation_time": 1726394704.21644,
+                "auxillary_file_paths": [
+                    "results\\AutoPark\\AutoParkCar\\AutoParkCar-9499063.pt"
+                ]
+            },
+            {
+                "steps": 9999072,
+                "file_path": "results\\AutoPark\\AutoParkCar\\AutoParkCar-9999072.onnx",
+                "reward": 550.8341660261154,
+                "creation_time": 1726401674.9770439,
+                "auxillary_file_paths": [
+                    "results\\AutoPark\\AutoParkCar\\AutoParkCar-9999072.pt"
+                ]
+            },
+            {
+                "steps": 10210072,
+                "file_path": "results\\AutoPark\\AutoParkCar\\AutoParkCar-10210072.onnx",
+                "reward": 550.8341660261154,
+                "creation_time": 1726401701.2662287,
+                "auxillary_file_paths": [
+                    "results\\AutoPark\\AutoParkCar\\AutoParkCar-10210072.pt"
+                ]
+            },
+            {
+                "steps": 10210072,
+                "file_path": "results\\AutoPark\\AutoParkCar\\AutoParkCar-10210072.onnx",
+                "reward": null,
+                "creation_time": 1726402614.654366,
+                "auxillary_file_paths": [
+                    "results\\AutoPark\\AutoParkCar\\AutoParkCar-10210072.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 10210072,
+            "file_path": "results\\AutoPark\\AutoParkCar.onnx",
+            "reward": null,
+            "creation_time": 1726402614.654366,
+            "auxillary_file_paths": [
+                "results\\AutoPark\\AutoParkCar\\AutoParkCar-10210072.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "2.3.0+cu121"
+    }
+}

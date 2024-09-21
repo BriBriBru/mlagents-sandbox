@@ -10,6 +10,7 @@ public class CarAgentController : Agent
     private float currentSteerAngle;
     private float currentBreakForce;
     private bool isBreaking;
+    private float elapsedTime;
 
     [Header("Car Settings")]
     [SerializeField] private float motorForce;
@@ -34,6 +35,7 @@ public class CarAgentController : Agent
 
     [Header("Agent Settings")]
     [SerializeField] private short numBeaconRequired = 6;
+    [SerializeField] private const float timeLimit = 120f;
 
     public override void Initialize()
     {
@@ -45,17 +47,30 @@ public class CarAgentController : Agent
     {
         transform.position = initialPosition;
         transform.rotation = initialRotation;
+        elapsedTime = 0f; // Reset the timer
     }
 
     public override void CollectObservations(VectorSensor sensor)
     {
-        sensor.AddObservation(transform.localPosition.x);
-        sensor.AddObservation(transform.localPosition.z);
+        // Agent's position and rotation
+        sensor.AddObservation(transform.localPosition.x / 10f); // Normalize position
+        sensor.AddObservation(transform.localPosition.z / 10f); // Normalize position
+        sensor.AddObservation(transform.localRotation.y / 360f); // Normalize rotation
 
-        sensor.AddObservation(parkingPlace.transform.localPosition.x);
-        sensor.AddObservation(parkingPlace.transform.localPosition.z);
+        // Parking spot position
+        sensor.AddObservation(parkingPlace.transform.localPosition.x / 10f); // Normalize position
+        sensor.AddObservation(parkingPlace.transform.localPosition.z / 10f); // Normalize position
 
+        // Number of beacons in place
         sensor.AddObservation(parkingPlace.GetComponent<ParkingPlace>().numBeaconInPlace);
+
+        // Agent's velocity
+        sensor.AddObservation(GetComponent<Rigidbody>().velocity.x / 10f); // Normalize velocity
+        sensor.AddObservation(GetComponent<Rigidbody>().velocity.z / 10f); // Normalize velocity
+
+        // Distance to the parking spot
+        float distanceToParking = Vector3.Distance(transform.position, parkingPlace.transform.position) / 10f; // Normalize distance
+        sensor.AddObservation(distanceToParking);
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -80,6 +95,23 @@ public class CarAgentController : Agent
         currentBreakForce = isBreaking ? breakForce : 0f;
         ApplyBreaking();
 
+        // Calculate distance to the parking spot
+        float distanceToParking = Vector3.Distance(transform.position, parkingPlace.transform.position);
+
+        // Intermediate reward for being close to the parking spot
+        if (distanceToParking < 5f)
+        {
+            AddReward(0.1f);
+        }
+
+        // Intermediate reward for facing the correct direction
+        Vector3 directionToParking = (parkingPlace.transform.position - transform.position).normalized;
+        float dotProduct = Vector3.Dot(transform.forward, directionToParking);
+        if (dotProduct > 0.9f)
+        {
+            AddReward(0.1f);
+        }
+
         if (parkingPlace.GetComponent<ParkingPlace>().numBeaconInPlace == numBeaconRequired)
         {
             AddReward(100f);
@@ -89,6 +121,16 @@ public class CarAgentController : Agent
         else
         {
             ChangeParkingZoneColor(Color.red);
+        }
+
+        // Update the timer
+        elapsedTime += Time.fixedDeltaTime;
+
+        // Apply penalty if the agent does not park within the time limit
+        if (elapsedTime > timeLimit)
+        {
+            AddReward(-50f); // Apply a penalty
+            EndEpisode();
         }
     }
 
